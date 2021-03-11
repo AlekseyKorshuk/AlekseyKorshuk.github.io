@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>%UNITY_WEB_NAME%</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.javascript"></script>
-    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <title>Unity WebGL Player | Plug Me In</title>
+  </head>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" style="width: 1080px; height: 1920px; background: #E3E3E3"></canvas>
+    <script src="Build/WebBuild.loader.js"></script>
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WebBuild.data.gz",
+        frameworkUrl: "Build/WebBuild.framework.js.gz",
+        codeUrl: "Build/WebBuild.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Korshuk",
+        productName: "Plug Me In",
+        productVersion: "1.0",
+      });
     </script>
-</head>
-<body>
-<div class="webgl-content">
-    <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px"></div>
-</div>
-<div class="simmer">template by: <a href="https://simmer.io" target="_blank">SIMMER.io</a></div>
-<script src="TemplateData/responsive.javascript"></script>
-</body>
+  </body>
 </html>
